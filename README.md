@@ -85,5 +85,13 @@ This is the place for you to write reflections:
 ### Mandatory (Subscriber) Reflections
 
 #### Reflection Subscriber-1
+1. RwLock<> is necessary because of concurrency requirements such as accessing the repository to add or retrieve notifications, and exclusive access when modifying the underlying vector to avoid data corruption. RwLock allows multiple threads to concurrently acquire a read lock to access the shared data for reading purposes, ensuring efficient concurrent read access. In Mutex only one thread can access data at a time.
+
+2. Rust does not support mutating the content of a static variable using a static function because it focuses on safety, ownership, and concurrency management. If rust did not enforce immutable static variables, it could introduce data races, thread safety issues, concurrent programming problems, reduced safety guarantee, and performance overhead.
 
 #### Reflection Subscriber-2
+1. I did not explore things outside of this tutorial because I didn't take the time to. However, I want to expose myself to a deeper understanding of Rust and the given material so that I can use it in my group project.
+
+2. The observer pattern eases plugging in more subscribers by establishing well-defined interfaces instead of directly referencing the publisher and its subscribers, and allowing for seamless integration of new subscribers. Spawning more than one instance of the main application is straightforward, because each instance is independent and can manage its set of subscribers efficiently.
+
+3. I have not tried to make my own tests, or enhanced the documentation of my Postman collection. Perhaps it could be usefuly, but I have yet to explore it.
